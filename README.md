@@ -6,7 +6,7 @@ Este proyecto como examen de prueba de conocimientos, contiene lo siguiente:
 
 
 
-2. Para ejecutar la base de datos se deben ejecutar los siguientes comandos desde la consola:
+2. Para ejecutar la base de datos(sqlite3, que es la que tiene por default django) se deben ejecutar los siguientes comandos desde la consola:
    python manage.py makemigrations
    python manage.py migrate
 
