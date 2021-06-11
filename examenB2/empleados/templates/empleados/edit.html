@@ -1,0 +1,12 @@
+{% extends 'empleados/layout.html' %}
+{% load crispy_forms_tags %}
+
+{% block body %}
+    <a href="{% url 'index' %}">Regresar</a>
+    <h1>Editar empleado</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button class="btn btn-primary mt-4">Editar</button>
+    </form>
+{% endblock %}

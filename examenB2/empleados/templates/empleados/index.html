@@ -1,0 +1,63 @@
+{% extends 'empleados/layout.html' %}
+
+{% block body %}
+        <div class="col-12">
+            <h1>Lista de empleados</h1>
+            <a href="{% url 'add' %}" class="btn btn-secondary mb-5">Agregar empleado</a>
+        </div>
+        <div class="col-12">
+            <form method="GET" class="row g-3">
+                <div class="col-md-3">
+                    <label>Empresa:</label>
+                    <select name="empresa" class="form-control">
+                        <option value="">---</option>
+                        {% for empresa in empresas %}
+                            <option value="{{ empresa.id }}">{{ empresa }}</option>
+                        {% endfor %}
+                    </select>
+                </diV>
+                <div class="col-md-3">
+                    <label>Departamento:</label>
+                    <select name="departamento" class="form-control">
+                        <option value="">---</option>
+                        {% for departamento in departamentos %}
+                            <option value="{{ departamento.id }}">{{ departamento }}</option>
+                        {% endfor %}
+                    </select>
+                </diV>
+                <div class="col-md-3">
+                    <label></label>
+                    <input type="text" name="criterio" class="form-control" placeholder="Nombre...">
+                </div>
+                <div class="col-md-3">
+                    <label></label>
+                    <button type="submit" class="btn btn-primary mt-4">Buscar</button>
+                </div>
+            </form>
+        </div>
+        <div class="col-12">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Empleado</th>
+                        <th>Departamento</th>
+                        <th>Empresa</th>
+                        <th>Operaciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for empleado in empleados %}
+                        <tr>
+                            <td>{{ empleado }}</td>
+                            <td>{{ empleado.departamento }}</td>
+                            <td>{{ empleado.empresa }}</td>
+                            <td>
+                                <a href="{% url 'delete' empleado.id %}" class="btn btn-primary btn-sm">Eliminar</a>
+                                <a href="{% url 'edit' empleado.id %}" class="btn btn-secondary btn-sm">Editar</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+{% endblock %}
